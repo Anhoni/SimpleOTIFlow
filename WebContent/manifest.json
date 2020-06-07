@@ -1,0 +1,72 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+	"_version": "1.1.0",
+	"id": "SimpleOTIFlow",
+	"type": "application",
+	"i18n": "i18n/i18n.properties",
+	"title": "{{appTitle}}",
+	"description": "{{appDescription}}",
+	"applicationVersion": {
+	  	"version": "1.0.0"
+		},
+	"ach": "CA-UI5-DOC"
+  },
+  "sap.ui": {
+	"_version": "1.1.0",
+	"technology": "UI5",
+	"deviceTypes": {
+	  "desktop": true,
+	  "tablet": true,
+	  "phone": true
+	},
+	"supportedThemes": [
+	  "sap_belize"
+	]
+  },
+  "sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "SimpleOTIFlow.veiw.First",
+		"type": "XML",
+		"dependencies": {
+			  	"minUI5Version": "1.30",
+				"libs": {
+					"sap.m": {},
+					"sap.ui.commons": {},
+					"sap.ui.core": {}
+			  		}
+				},
+	"models": {
+		  "i18n": {
+			"type": "sap.ui.model.resource.ResourceModel",
+			"settings": {
+			  "bundleName": "SimpleOTIFlow.i18n.i18n"
+				}
+	  		}
+		},
+	
+	"routing": {
+	   	 "config": {
+	  		"routerClass": "sap.m.routing.Router",
+	  		"viewType": "XML",
+	  		"viewPath": "SimpleOTIFlow.view",
+	  		"controlId": "app",
+	  		"transition": "slide",
+	  		"controlAggregation": "pages"
+	   				},
+	   	"routes": [
+				  	{
+				   		"pattern": "",
+				   		"name": "Home",
+				   		"view": "First"
+				  	},
+				  	{
+				   		"pattern": "second",
+				   		"name": "Second",
+				   		"view": "sub"
+				  	}
+	   			]
+  		}
+  		}
+  		
+}

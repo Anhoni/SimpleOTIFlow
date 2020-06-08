@@ -26,7 +26,7 @@
   },
   "sap.ui5": {
 		"_version": "1.1.0",
-		"rootView": "SimpleOTIFlow.veiw.First",
+		"rootView": "SimpleOTIFlow.View.First",
 		"type": "XML",
 		"dependencies": {
 			  	"minUI5Version": "1.30",
@@ -49,7 +49,7 @@
 	   	 "config": {
 	  		"routerClass": "sap.m.routing.Router",
 	  		"viewType": "XML",
-	  		"viewPath": "SimpleOTIFlow.view",
+	  		"viewPath": "SimpleOTIFlow.View",
 	  		"controlId": "app",
 	  		"transition": "slide",
 	  		"controlAggregation": "pages"

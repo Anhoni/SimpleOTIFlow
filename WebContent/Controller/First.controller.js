@@ -1,38 +1,69 @@
-sap.ui.controller("simpleotiflow.First", {
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageToast",
+	"sap/ui/core/UIComponent"
+], function (Controller, MessageToast ,UIcomponent ) {
+	"use strict";
+	return Controller.extend("SimpleOTIFlow.controller.First", {
+		onInit : function (){
+			MessageToast.show("yay inside first controller"); 
+		},
 
-/**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf simpleotiflow.First
-*/
-//	onInit: function() {
-//
-//	},
+		onPress : function () {
+			
+			//below will give you view for current controller
+			//console.log(this.getView());
+			//get user name from screen 
+			var user =  this.getView().byId("userName").getValue();
+			//get password from screen 
+			var pass =  this.getView().byId("password").getValue();
+			//tell user to fill the details passowd nad user name 
+			if ( ( user == "" )|| ( pass == "") )
+				MessageToast.show("fill the user name and password");
+			else	
+			$.ajax({
+				type: "GET",
+				contentType: "application/json",
+				url: "data/Logon.json",
+				dataType: "json",
+				async: false,
+				error :  function(data, textStatus, jqXHR) {
+					console.log("error getting data " + textStatus );},
+				success: function(data, textStatus, jqXHR) {
+					for ( var i = 0 ; i < data.length ; i++)
+						{						
+						if ( data[i].User == user )
+							if ( pass == data[i].Password)
+							{
+								MessageToast.show("autheticated go ahead do shit")
+								var auth = true;
+							}
+							
+						}
+						if ( auth != true )
+							MessageToast.show("go to hell");
+				  }
+				});				
+			// read msg from i18n model
+			
+			//console.log(this.getView().getModel());
 
-/**
-* Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-* (NOT before the first rendering! onInit() is used for that one!).
-* @memberOf simpleotiflow.First
-*/
-//	onBeforeRendering: function() {
-//
-//	},
+			//var oBundle = this.getView().getModel("i18n").getResourceBundle();
+			//var sRecipient = this.getView().getModel().getProperty("/recipient/name");
+			//var sMsg = oBundle.getText("helloMsg", [sRecipient]);
 
-/**
-* Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-* This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf simpleotiflow.First
-*/
-//	onAfterRendering: function() {
-//
-//	},
-
-/**
-* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf simpleotiflow.First
-*/
-//	onExit: function() {
-//
-//	}
+			// show message
+			//MessageToast.show("hello native person whar are you doing here");
+			//console.log(this);
+			//var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			//oRouter.navTo("second");
+		}
+	});
+/*	return UIComponent.extend("sales_repo.Component", {
+		onPress : function( ){
+			  var oRouter = UIComponent.getRouterFor(this);
+			  oRouter.navTo("second");
+		}
+	});*/
 
 });

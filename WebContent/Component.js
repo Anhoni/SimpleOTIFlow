@@ -10,10 +10,10 @@ sap.ui.define([
 			manifest: "json",
 			
 		},
-
 		init : function () {
-
+			console.log("intoComponent");
 			// call the init function of the parent
+			console.log(this);
 			UIComponent.prototype.init.apply(this, arguments);
 			console.log(this);
 			this.getRouter().initialize();
@@ -26,12 +26,16 @@ sap.ui.define([
 			url: "data/Logon.json",
 			dataType: "json",
 			async: false,
+			error :  function(data, textStatus, jqXHR) {
+				oModel = new JSONModel(data);
+				console.log("error getting data " + textStatus );
+			  },
 			success: function(data, textStatus, jqXHR) {
 				oModel = new JSONModel(data);
-				console.log("success");
-			  }});	
+			  }
+			});	
 			this.setModel(oModel);
-			//console.log(this);
+			//console.log("outta component");
 			//var table1 = sap.ui.getCore().byId("__xmlview0--Table1");
 			//table1.setModel(oModel);
 			//console.log(table1);

@@ -10,7 +10,8 @@ sap.ui.define([
 		},
 
 		onPress : function () {
-			
+			//declaring variable for conclude global authenfication 
+			var auth;
 			//below will give you view for current controller
 			//console.log(this.getView());
 			//get user name from screen 
@@ -36,14 +37,18 @@ sap.ui.define([
 							if ( pass == data[i].Password)
 							{
 								MessageToast.show("autheticated go ahead do shit")
-								var auth = true;
-							}
-							
+								auth = true;								
+							}						
 						}
 						if ( auth != true )
 							MessageToast.show("go to hell");
 				  }
-				});				
+				});	
+			if ( auth == true )
+				{
+				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.navTo("second");
+				}
 			// read msg from i18n model
 			
 			//console.log(this.getView().getModel());
@@ -58,6 +63,7 @@ sap.ui.define([
 			//var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			//oRouter.navTo("second");
 		}
+		
 	});
 /*	return UIComponent.extend("sales_repo.Component", {
 		onPress : function( ){

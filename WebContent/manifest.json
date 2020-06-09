@@ -62,8 +62,8 @@
 				  	},
 				  	{
 				   		"pattern": "second",
-				   		"name": "Second",
-				   		"view": "sub"
+				   		"name": "second",
+				   		"view": "Second"
 				  	}
 	   			]
   		}

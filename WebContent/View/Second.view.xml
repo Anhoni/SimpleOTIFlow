@@ -5,7 +5,7 @@
   		<Button
 			id="order"
 			type="Emphasized"
-			text="Order"
+			text="Create Order"
 			icon="sap-icon://sales-order"
 			press="onOrder"
 			class="sapUiSmallMargin"
@@ -13,7 +13,7 @@
   		<Button
 			id="delivery"
 			type="Emphasized"
-			text="Delivery"
+			text="Deliver Order"
 			icon="sap-icon://shipping-status"
 			press="onDelivery"
 			class="sapUiSmallMargin"
@@ -29,11 +29,19 @@
   		<Button
 			id="customer"
 			type="Emphasized"
-			text="Customer"
+			text="Customers"
 			icon="sap-icon://add-contact"
 			press="onCustomer"
 			class="sapUiSmallMargin"
-		/>									
+		/>	
+		<Button
+			id="material"
+			type="Emphasized"
+			text="Materials"
+			icon="sap-icon://add-product"
+			press="onMaterial"
+			class="sapUiSmallMargin"
+		/>
 		</content>
 	</Page>
 </core:View>
